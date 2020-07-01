@@ -6,7 +6,8 @@ Use the timeit and cProfile libraries to find bad code.
 """
 
 __author__ = "Andrew Fillenwarth, special thanks to \
-              Sebastiaan Mathot and Corey Schafer on youtube"
+              Sebastiaan Mathot and Corey Schafer on youtube \
+              Thanks also to Ybrayym Abamov "
 
 import cProfile
 import pstats
