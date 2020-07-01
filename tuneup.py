@@ -12,7 +12,7 @@ import cProfile
 import pstats
 # import functools
 import timeit
-import io
+# import io
 
 
 def profile(func):
@@ -27,11 +27,11 @@ def profile(func):
         pr.disable()
         ps = pstats.Stats(pr).strip_dirs().sort_stats('cumulative')
         ps.print_stats(5)
-        #string = io.StringIO()
-        #sortby = 'cumulative'
-        #ps = pstats.Stats(pr, stream=string).sort_stats(sortby)
-        #ps.print_stats()
-        #print(string.getvalue())
+        # string = io.StringIO()
+        # sortby = 'cumulative'
+        # ps = pstats.Stats(pr, stream=string).sort_stats(sortby)
+        # ps.print_stats()
+        # print(string.getvalue())
         return retval
 
     return inner
@@ -57,11 +57,12 @@ def find_duplicate_movies(src):
 
 def timeit_helper():
     """Part A: Obtain some profiling measurements using timeit."""
-    t = timeit.Timer(stmt='find_duplicate_movies("movies.txt")', setup='from __main__ import find_duplicate_movies')
+    t = timeit.Timer(stmt='find_duplicate_movies("movies.txt")',
+                     setup='from __main__ import find_duplicate_movies')
     result = t.repeat(repeat=7, number=3)
     best_time = min(result) / float(3)
-    print('Best time across 7 repeats of 3 runs per repeat: {} sec '.format(best_time))
-    
+    print('Best time across 7 repeats of 3 runs per repeat: {} sec '
+          .format(best_time))
 
 
 def main():
@@ -70,7 +71,6 @@ def main():
     timeit_helper()
     print(f'Found {len(result)} duplicate movies:')
     print('\n'.join(result))
-    
 
 
 if __name__ == '__main__':
